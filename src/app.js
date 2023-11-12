@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require("express");
 const path = require('path');
+const cookieParser = require('cookie-parser');
 const hbs = require('hbs');
 const jwt = require('jsonwebtoken');
 const User = require('./models/user');
@@ -19,6 +20,7 @@ hbs.registerPartials(partial_path);
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
+app.use(cookieParser());
 app.use(userRouter);
 /*
 const jwtConnect = async()=>{
